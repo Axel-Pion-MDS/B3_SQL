@@ -286,7 +286,7 @@ CREATE TABLE IF NOT EXISTS ticket_bought (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE IF NOT EXISTS ticket_office (
+CREATE TABLE IF NOT EXISTS office_ticket (
   ticket_id INT UNSIGNED,
   office_id INT UNSIGNED
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -361,8 +361,8 @@ ALTER TABLE album_image ADD CONSTRAINT fk_album_image_image_id FOREIGN KEY (imag
 ALTER TABLE ticket_bought ADD CONSTRAINT fk_ticket_bought_user_id FOREIGN KEY (user_id) REFERENCES user(id);
 ALTER TABLE ticket_bought ADD CONSTRAINT fk_ticket_bought_office_id FOREIGN KEY (office_id) REFERENCES ticket_office(id);
 ALTER TABLE ticket_bought ADD CONSTRAINT fk_ticket_bought_ticket_id FOREIGN KEY (ticket_id) REFERENCES ticket(id);
-ALTER TABLE ticket_office ADD CONSTRAINT fk_ticket_office_ticket_id FOREIGN KEY (ticket_id) REFERENCES ticket(id);
-ALTER TABLE ticket_office ADD CONSTRAINT fk_ticket_office_office_id FOREIGN KEY (office_id) REFERENCES office(id);
+ALTER TABLE office_ticket ADD CONSTRAINT fk_office_ticket_ticket_id FOREIGN KEY (ticket_id) REFERENCES ticket(id);
+ALTER TABLE office_ticket ADD CONSTRAINT fk_office_ticket_office_id FOREIGN KEY (office_id) REFERENCES ticket_office(id);
 ALTER TABLE user_shopping ADD CONSTRAINT fk_user_shopping_user_id FOREIGN KEY (user_id) REFERENCES user(id);
 ALTER TABLE user_shopping ADD CONSTRAINT fk_user_shopping_shopping_id FOREIGN KEY (shopping_id) REFERENCES shopping_list(id);
 ALTER TABLE user_survey ADD CONSTRAINT fk_user_survey_user_id FOREIGN KEY (user_id) REFERENCES user(id);
